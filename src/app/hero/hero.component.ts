@@ -8,30 +8,28 @@ import { HeroService } from '../../app/services/hero/hero.service';
   styleUrls: ['./hero.component.less']
 })
 export class HeroComponent implements OnInit {
-
-  @Input() heroName :string = '';
-  @Input() description :string = '';
-  @Input() characterImg :string = '';
-  @Input() bgImageVariable :string = "../../src/assets/img/heroListBG.png";
-  // @Input() isFavorite :boolean = false;
   
-  heroes :any = [];
+  heroes :any;
+  
+  @Input() heroName !:string;
+  @Input() characterImg !:string;
+  @Input() isFavorite !:boolean;
+  @Input() id !:number; //string
 
-  constructor(private router: Router, private Hero: HeroService) { 
-  }
+  constructor(private router: Router, private Hero: HeroService) { }
 
   ngOnInit(): void 
   {
-   
+    this.heroes = this.Hero.heroes;
   }
 
   goToPage(pageName:string) :void 
   {
-    this.router.navigate([`${pageName}`]);
+    this.router.navigate([ pageName, this.id ]);
   }
 
-  favorite() {
-    this.heroes.isFavorite === false ?  this.Hero.setFavorite() : this.Hero.setNoFavorite();  
+  onSwitch() {
+    return this.heroes.isFavorite = !this.heroes.isFavorite;
   }
 
 }

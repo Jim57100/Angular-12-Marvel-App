@@ -1,15 +1,19 @@
-<div class="container-fluid">
-  <li>
-    <div class="row mt-3">
-      <div class="col-sm-12 col-md-2">
-        <img class="imgCharacter" [src]="characterImg" alt="character image">
-      </div>
-      <div class="col-sm-12 col-md-3">
-        <h3>{{ heroName }}</h3>
-        <button class="btn btn-secondary m-1" (click)="favorite()">Favorite</button>
-        <a class="btn btn-info m-1" (click)="goToPage('hero/:id')">Show details</a>
-      </div>
+
+<li>
+  <div class="card">
+    <div class="card-header">
+      <img class="imgCharacter" [src]="characterImg" alt="character image">
     </div>
-  </li>
-</div>
-<!-- [ngStyle]="{'background-color':vitalItem.value.color}" -->
+    <div class="card-body">
+      <h5 class="card-title">{{ heroName }}</h5>
+      <span class="favorite" *ngIf="heroes.isFavorite == false"><img id="favorite1" src="../../assets/img/icons/hTransparent.png"></span>
+      <span class="favorite" *ngIf="heroes.isFavorite == true"><img id="favorite2" src="../../assets/img/icons/hRed.png"></span>
+      <p class="card-text">
+        <button class="btn btn-secondary m-1" (click)="onSwitch()">Favorite</button>
+        <a class="btn btn-info m-1" (click)="goToPage('hero/')">Show details</a>
+
+      </p>   
+    </div>
+  </div>
+</li>
+

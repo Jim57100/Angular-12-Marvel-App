@@ -1,7 +1,12 @@
-<div class="container-fluid listBG">
-  <!-- <div class="overflow-auto"> -->
-    <ul class="list-group">
-      <app-hero *ngFor = "let hero of heroes" [heroName]="hero.heroName" [description]="hero.description" [characterImg]="hero.characterImg"></app-hero>
+<div class="container-fluid" [ngStyle]="{background: 'url(../../assets/img/backgrounds/hulk_bg2.png) no-repeat 0 0'}">
+  
+    <ul class="heroList list-group">
+      <app-hero *ngFor="let hero of heroes;" 
+      [heroName]="hero.heroName" 
+      [characterImg]="hero.characterImg" 
+      [isFavorite]="hero.isFavorite"
+         [id]="hero.id">
+      </app-hero>
     </ul>
-  <!-- </div> -->
+
 </div>

@@ -17,9 +17,9 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
 
 import { HeroService } from './services/hero/hero.service';
 
-// import { environment } from 'src/environments/environment';
-// import { AngularFireModule} from '@angular/fire' ;
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule} from '@angular/fire' ;
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -40,8 +40,8 @@ import { HeroService } from './services/hero/hero.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [
     HeroService

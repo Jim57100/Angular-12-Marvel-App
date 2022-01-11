@@ -31,15 +31,15 @@ const routes: Routes = [
     component: HeroModifComponent
   },
   {
-    path: 'comics',
+    path: 'comics/:id',
     component: HeroComicsListComponent
   },
   {
-    path: 'movies',
+    path: 'movies/:id',
     component: HeroMoviesListComponent
   },
   {
-    path: 'series',
+    path: 'series/:id',
     component: HeroSeriesListComponent
   }
 ];
