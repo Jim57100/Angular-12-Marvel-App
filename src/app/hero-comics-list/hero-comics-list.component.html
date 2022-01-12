@@ -1,3 +1,11 @@
-
-<p>comics list</p>
-
+<div class="container">
+  <ul class="comicList list-group">
+    <app-hero-comics-list *ngFor="let comic of comics;" 
+      [comicTitle]="comic.title" 
+      [comicDate]="comic.date" 
+      [comicAuthors]="comic.authors"
+      [comicImg]="comic.image"
+      [id]="comic.id">
+    </app-hero-comics-list>
+  </ul>
+</div>

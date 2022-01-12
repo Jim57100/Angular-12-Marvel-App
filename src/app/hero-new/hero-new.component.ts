@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from '../models/hero.model';
 import { HeroService } from '../services/hero/hero.service';
 
 @Component({
@@ -7,14 +8,19 @@ import { HeroService } from '../services/hero/hero.service';
   styleUrls: ['./hero-new.component.less']
 })
 export class HeroNewComponent implements OnInit {
-  heroes :any = [];
+
+  hero :any = [];
+
   constructor(private Hero: HeroService) { }
 
   ngOnInit(): void {
-    this.heroes = this.Hero.heroes;
+    // this.heroes = this.Hero.heroes;
+    this.hero = new Hero();
   }
 
   add() {
-    
+    this.Hero.saveNewHero(this.hero).subscribe(()=>{
+      this.hero = new Hero();
+    })
   }
 }

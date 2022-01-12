@@ -16,8 +16,8 @@
         <li>affiliation : {{ hero.affiliation }}</li>
       </ul>
       <div class="action">
-        <a class="btn btn-warning m-2" [href]="'hero-modif'">Update</a>
-        <a class="btn btn-danger m-2" [href]="''">Delete</a>
+        <a class="btn btn-warning m-2" [href]="'modif/:id'">Update</a>
+        <a class="btn btn-danger m-2" [href]="'delete(id)'">Delete</a>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
       <div class="card text-left">
         <img class="card-img-top" src="holder.js/100px180/" alt="">
         <div class="card-body d-grid gap-2">
-          <a class="btn btn-grad btn-lg btn-bloc" [href]="'hero-comics-list'">Comics</a>
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="'comics/'">Comics</a>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="card text-left">
         <img class="card-img-top" src="holder.js/100px180/" alt="">
         <div class="card-body d-grid gap-2">
-          <a class="btn btn-grad btn-lg btn-bloc" [href]="'hero-comics-list'">Movies</a>
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="'films/'">Movies</a>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
       <div class="card text-left">
         <img class="card-img-top" src="holder.js/100px180/" alt="">
         <div class="card-body d-grid gap-2">
-          <a class="btn btn-grad btn-lg btn-bloc" [href]="">Series</a>
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="'series/'">Series</a>
         </div>
       </div>
     </div>

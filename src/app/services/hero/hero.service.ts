@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Film } from 'src/app/models/hero.model';
+import { Hero } from '../../../app/models/hero.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -43,7 +45,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/thor_thumb.png',
       description: 'Thor Odinson wields the power of the ancient Asgardians to fight evil throughout the Nine Realms and beyond.',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/thor.jpg',
     },
     {
       id: 3,
@@ -71,7 +73,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/panth_thumb.png',
       description: 'As the king of the African nation of Wakanda, T’Challa protects his people as the latest in a legacy line of Black Panther warriors.',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/bpt.jpg',
     },
     {
       id: 5,
@@ -85,7 +87,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/hulk_thumb.png',
       description: 'Exposed to heavy doses of gamma radiation, scientist Bruce Banner transforms into the mean, green rage machine called the Hulk.',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/hulk.jpg',
     },
     {
       id: 6,
@@ -99,7 +101,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/vision_thumb.png',
       description: 'A fully unique being, Vision came about thanks to a combination of Wakandan Vibranium, Asgardian lightning, an Infinity Stone, and more.',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/vision.jpg',
     },
     {
       id: 7,
@@ -138,12 +140,12 @@ export class HeroService {
       powers: '',
       affiliation: '',
       characterImg: '../../../assets/img/characters/captain-america.png',
-      thumbnails: '../../../assets/img/thumbnails/capt_am_thumb.png',
+      thumbnails: '../../../assets/img/thumbnails/cptam_thumb.png',
       description: 'America’s World War II Super-Soldier continues his fight in the present as an Avenger and untiring sentinel of liberty.',
       isFavorite: false,
       backgroundImg: '../../../assets/img/backgrounds/ca_bg.jpg',
     },
-    {
+    { 
       id: 10,
       heroName: 'Captain Marvel',
       gender: 'female',
@@ -152,7 +154,7 @@ export class HeroService {
       affiliation: '',
       realName: 'Carol Danvers',
       characterImg: '../../../assets/img/characters/captain-marvel.png',
-      thumbnails: '../../../assets/img/thumbnails/capt_am_thumb.png',
+      thumbnails: '../../../assets/img/thumbnails/captmarv_thumb.png',
       description: 'Carol Danvers becomes one of the universe\'s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.',
       isFavorite: false,
       backgroundImg: '',
@@ -211,7 +213,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/spider_thumb.png',
       description: 'With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/spm.jpg',
     },
     {
       id: 15,
@@ -225,7 +227,7 @@ export class HeroService {
       thumbnails: '../../../assets/img/thumbnails/scar_thumb.png',
       description: 'Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.',
       isFavorite: false,
-      backgroundImg: '',
+      backgroundImg: '../../../assets/img/backgrounds/scar.png',
     },
   ];
 
@@ -253,7 +255,7 @@ export class HeroService {
     );
   }
 
-  saveNewFilm(hero: Hero): any {
+  saveNewHero(hero: Hero): any {
     return new Observable(obs => {
       this.heroesRef.add({...hero}).then(() => {
         obs.next();
@@ -263,20 +265,20 @@ export class HeroService {
 
   get(id: any): any {
     return new Observable(obs => {
-      this.filmsRef.doc(id).get().subscribe(res => {
+      this.heroesRef.doc(id).get().subscribe(res => {
         obs.next({id: res.id, ...res.data()});
       });
     });
   }
 
-  update(film: Film) {
+  update(hero: Hero) {
     return new Observable(obs => {
-      this.filmsRef.doc(film.id).update(film);
+      this.heroesRef.doc(hero.id).update(hero);
       obs.next();
     });
   }
 
   delete(id: any) {
-    this.filmsRef.doc(id).delete();
+    this.heroesRef.doc(id).delete();
   }
 }

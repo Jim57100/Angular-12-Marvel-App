@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ComicsService } from '../services/comics/comics.service';
+import { HeroService } from '../services/hero/hero.service';
 
 @Component({
   selector: 'app-hero-comics-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComicsListComponent implements OnInit {
 
-  constructor() { }
+  heroes :any;
+  comics :any;
+
+  @Input() comicTitle !:string;
+  @Input() comicDate !:string;
+  @Input() comicAuthors !:string;
+  @Input() comicImg !:string;
+  @Input() id !:number; //string
+
+  constructor(private Hero: HeroService, private Comic: ComicsService,) { }
 
   ngOnInit(): void {
+    this.heroes = this.Hero.heroes;
+    this.comics = this.Comic.comics;
+    this.id = this.heroes.id;
   }
 
 }

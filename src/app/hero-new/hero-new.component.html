@@ -1,35 +1,88 @@
-<div class="row">
-  <div class="col-12 col-sm-6">
-    <div class="form-group">
-      <label>Name</label><br>
-      <input type="text" class="form-control" [(ngModel)]="heroes.heroName">
+<div class="container">
+  <div class="row change mb-3" *ngIf="add">
+    <div class="col-12 alert alert-success">
+      Datas updated !
     </div>
   </div>
-  <div class="col-12 col-sm-6">
-    <div class="form-group">
-      <label>Real name</label><br>
-      <input type="text" class="form-control" [(ngModel)]="heroes.realName">
+  <div *ngIf="hero">
+    <div class="row mt-3 mb-3">
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Name</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.heroName">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Real Name</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.realName">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Gender</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.gender">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-12 col-sm-6">
-    <div class="form-group">
-      <label>Character Image</label><br>
-      <input type="text" class="form-control" [(ngModel)]="heroes.characterImg">
-    </div>
-  </div>
-  <div class="col-12 col-sm-6">
-    <div class="form-group">
-      <label>Description</label><br>
-      <input type="text" class="form-control" [(ngModel)]="heroes.characterImg">
-    </div>
-  </div>
-</div>
 
+    <div class="row mb-3">
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Place of origin</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.placeOfOrigin">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Powers</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.powers">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Affiliation</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.affiliation">
+        </div>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="submit">
-      <button class="btn btn-outline-success" (click)="add()">Envoyer</button>
+    <div class="row mb-3">
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Character Image</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.characterImg">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Thumbnail</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.thumbnails">
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label>Background Image</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.backgroundImg">
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="form-group">
+          <label>Bio</label><br>
+          <textarea name="synopsis" cols="30" rows="10" class="form-control" [(ngModel)]="hero.description"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center mb-3">
+      <div class="col-12">
+        <div class="submit d-grip gap-2">
+          <button type="button" class="btn btn-outline-success btn-lg" (click)="add()">Envoyer</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
