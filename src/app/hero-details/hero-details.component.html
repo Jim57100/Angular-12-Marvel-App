@@ -16,7 +16,7 @@
         <li>affiliation : {{ hero.affiliation }}</li>
       </ul>
       <div class="action">
-        <a class="btn btn-warning m-2" [href]="'modif/:id'">Update</a>
+        <a class="btn btn-warning m-2" [routerLink]="['/modif', hero.id]">Update</a>
         <a class="btn btn-danger m-2" [href]="'delete(id)'">Delete</a>
       </div>
     </div>

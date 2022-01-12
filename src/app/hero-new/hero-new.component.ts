@@ -7,20 +7,25 @@ import { HeroService } from '../services/hero/hero.service';
   templateUrl: './hero-new.component.html',
   styleUrls: ['./hero-new.component.less']
 })
-export class HeroNewComponent implements OnInit {
+export class HeroNewComponent implements OnInit 
+{
 
   hero :any = [];
 
   constructor(private Hero: HeroService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     // this.heroes = this.Hero.heroes;
     this.hero = new Hero();
   }
 
-  add() {
+  add() 
+  {
     this.Hero.saveNewHero(this.hero).subscribe(()=>{
       this.hero = new Hero();
-    })
+    });
   }
+
+
 }

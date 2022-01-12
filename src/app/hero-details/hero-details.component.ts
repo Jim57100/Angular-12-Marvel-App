@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeroService } from '../services/hero/hero.service';
-import { ComicsService } from '../services/comics/comics.service';
-import { FilmService } from '../services/film/film.service';
-import { SeriesService } from '../services/series/series.service';
+// import { ComicsService } from '../services/comics/comics.service';
+// import { FilmService } from '../services/film/film.service';
+// import { SeriesService } from '../services/series/series.service';
 
 @Component({
   selector: 'app-hero-details',
@@ -11,16 +11,19 @@ import { SeriesService } from '../services/series/series.service';
   styleUrls: ['./hero-details.component.less']
 })
 
-export class HeroDetailsComponent implements OnInit {
+export class HeroDetailsComponent implements OnInit 
+{
 
   hero :any = [];
   @Input() heroBackGround !:string;
+  @Input() id !:number; 
 
-  constructor(private Hero: HeroService,  private Movie: FilmService, private Serie: SeriesService, private router : ActivatedRoute) { }
+  constructor(private Hero: HeroService, private activatedRoutes : ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.hero = this.Hero.heroes;
-    const id = this.router.snapshot.params['id'];
+    const id = this.activatedRoutes.snapshot.params['id'];
     this.hero = this.Hero.getHeroById(id);
   }
 

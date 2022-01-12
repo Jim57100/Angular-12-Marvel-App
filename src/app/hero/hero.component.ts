@@ -7,7 +7,8 @@ import { HeroService } from '../../app/services/hero/hero.service';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.less']
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent implements OnInit 
+{
   
   heroes :any;
   

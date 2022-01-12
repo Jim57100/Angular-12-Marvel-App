@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class HeroService {
+export class HeroService 
+{
 
   private dbPath = '/hero';
   heroesRef: AngularFirestoreCollection<Hero>;
@@ -231,11 +232,13 @@ export class HeroService {
     },
   ];
 
-  switchFavorite(index :number) {
+  switchFavorite(index :number) 
+  {
     this.heroes[index].isFavorite = !this.heroes[index].isFavorite;
   }
 
-  getHeroById(id :number) {
+  getHeroById(id :number) 
+  {
     let tmp;
     for(const hero of this.heroes) {
       if(hero.id == id ) {
@@ -245,7 +248,8 @@ export class HeroService {
     return tmp;
   }
 
-  getAllHeroes(): any {
+  getAllHeroes() :any 
+  {
     return this.heroesRef.snapshotChanges().pipe(
       map((changes:any) => {
         return changes.map((doc:any) => {
@@ -255,7 +259,8 @@ export class HeroService {
     );
   }
 
-  saveNewHero(hero: Hero): any {
+  saveNewHero(hero: Hero) :any 
+  {
     return new Observable(obs => {
       this.heroesRef.add({...hero}).then(() => {
         obs.next();
@@ -263,7 +268,8 @@ export class HeroService {
     })
   }
 
-  get(id: any): any {
+  get(id: any): any 
+  {
     return new Observable(obs => {
       this.heroesRef.doc(id).get().subscribe(res => {
         obs.next({id: res.id, ...res.data()});
@@ -271,7 +277,8 @@ export class HeroService {
     });
   }
 
-  update(hero: Hero) {
+  update(hero: Hero) :any
+  {
     return new Observable(obs => {
       this.heroesRef.doc(hero.id).update(hero);
       obs.next();

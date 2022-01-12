@@ -1,4 +1,5 @@
-export class Hero {
+export class Hero 
+{
   id? :string;
   heroName :string;
   realName :string;
@@ -12,6 +13,7 @@ export class Hero {
   isFavorite :boolean;
 
   constructor() {
+    this.id = '';
     this.heroName = '';
     this.realName = '';
     this.gender = '';

@@ -8,13 +8,15 @@ import { HeroService } from '../services/hero/hero.service';
   styleUrls: ['./hero-list.component.less']
 })
 
-export class HeroListComponent implements OnInit {
+export class HeroListComponent implements OnInit 
+{
 
   heroes :any = [];
 
   constructor(private Hero: HeroService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     // this.heroes = this.Hero.heroes;
     this.Hero.getAllHeroes().subscribe((data: any) => {
       this.heroes = data;

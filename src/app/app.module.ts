@@ -22,6 +22,11 @@ import { environment } from '../environments/environment';
 import { AngularFireModule} from '@angular/fire' ;
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeroFilmListComponent } from './hero-film-list/hero-film-list.component';
+import { UploadDetailsComponent } from './upload-details/upload-details.component';
+import { UploadFormComponent } from './upload-form/upload-form.component';
+import { UploadListComponent } from './upload-list/upload-list.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -37,13 +42,18 @@ import { HeroFilmListComponent } from './hero-film-list/hero-film-list.component
     BannerComponent,
     HeroDetailsComponent,
     HeroFilmListComponent,
+    UploadDetailsComponent,
+    UploadFormComponent,
+    UploadListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     HeroService
