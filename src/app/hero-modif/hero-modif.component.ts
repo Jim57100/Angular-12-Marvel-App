@@ -10,15 +10,25 @@ import { HeroService } from '../services/hero/hero.service';
 export class HeroModifComponent implements OnInit {
 
   hero: any;
-
+  change:boolean = false;
   
 
   constructor(private Hero:HeroService, private router : ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.router.snapshot.params['id'];
-    this.hero = this.Hero.getHeroById(id);
+    // const id = this.route.snapshot.params['id'];
+    // this.Hero.get(id).subscribe((value: any) => {
+    //   console.log(value)
+    //   this.hero = value;
+    // });
   }
 
-
+  modif() {
+    this.Hero.update(this.hero).subscribe(() => {
+      this.change = true;
+      setTimeout(() => {
+        this.change = false;
+      }, 3000);
+    })
+  }
 }

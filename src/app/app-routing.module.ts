@@ -7,7 +7,8 @@ import { HeroModifComponent } from './hero-modif/hero-modif.component';
 import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroComicsListComponent } from './hero-comics-list/hero-comics-list.component';
 import { HeroSeriesListComponent } from './hero-series-list/hero-series-list.component';
-import { HeroMoviesListComponent } from './hero-movies-list/hero-movies-list.component';
+import { HeroFilmListComponent } from './hero-film-list/hero-film-list.component';
+
 
 const routes: Routes = [
   {
@@ -35,8 +36,8 @@ const routes: Routes = [
     component: HeroComicsListComponent
   },
   {
-    path: 'movies/:id',
-    component: HeroMoviesListComponent
+    path: 'films/:id',
+    component: HeroFilmListComponent
   },
   {
     path: 'series/:id',

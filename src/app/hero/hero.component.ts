@@ -28,8 +28,10 @@ export class HeroComponent implements OnInit {
     this.router.navigate([ pageName, this.id ]);
   }
 
-  onSwitch() {
-    return this.heroes.isFavorite = !this.heroes.isFavorite;
+  onSwitch(id :number) 
+  {
+    console.log(id);
+    return this.heroes[id].isFavorite = !this.heroes[id].isFavorite;
   }
 
 }

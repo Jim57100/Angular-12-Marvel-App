@@ -1,18 +1,69 @@
 
-<div class="container">
-  <form>
-    <div class="form-group">
-      <label for="hero_name">Hero Name</label>
-      <input type="email" class="form-control" id="hero_name" placeholder="The name of your hero">
+<div class="row change" *ngIf="change">
+  <div class="col-12 alert alert-success">
+    Datas updated !
+  </div>
+</div>
+<div *ngIf="hero">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Name</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.heroName">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="description" rows="5" placeholder="Tell us a short story of your hero"></textarea>
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Real Name</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.realName">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="characterImg">Hero Image</label>
-      <input type="file" class="form-control-file" id="characterImg">
+  </div>
+  
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Producteur</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.gender">
+      </div>
     </div>
-  </form>
-  <button class="btn btn-danger">Delete</button>
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Scenariste</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.placeOfOrigin">
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Réalisateur</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.powers">
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-group">
+        <label>Musique</label><br>
+        <input type="text" class="form-control" [(ngModel)]="hero.affiliation">
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label>Bio</label><br>
+        <textarea name="synopsis" cols="30" rows="10" class="form-control" [(ngModel)]="hero.description"></textarea>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <div class="submit">
+        <button class="btn btn-outline-success" (click)="modif()">Envoyer</button>
+      </div>
+    </div>
+  </div>
 </div>

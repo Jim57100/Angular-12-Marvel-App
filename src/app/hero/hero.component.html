@@ -6,12 +6,11 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ heroName }}</h5>
-      <span class="favorite" *ngIf="heroes.isFavorite == false"><img id="favorite1" src="../../assets/img/icons/hTransparent.png"></span>
-      <span class="favorite" *ngIf="heroes.isFavorite == true"><img id="favorite2" src="../../assets/img/icons/hRed.png"></span>
+      <span class="favorite" *ngIf="heroes[id].isFavorite == false"><img id="favorite1" src="../../assets/img/icons/hTransparent.png"></span>
+      <span class="favorite" *ngIf="heroes[id].isFavorite == true"><img id="favorite2" src="../../assets/img/icons/hRed.png"></span>
       <p class="card-text">
-        <button class="btn btn-secondary m-1" (click)="onSwitch()">Favorite</button>
+        <button class="btn btn-secondary m-1" (click)="onSwitch(id)">Favorite</button>
         <a class="btn btn-info m-1" (click)="goToPage('hero/')">Show details</a>
-
       </p>   
     </div>
   </div>

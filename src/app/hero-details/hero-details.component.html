@@ -1,50 +1,56 @@
+<img [src]="hero.backgroundImg" alt="bgImg" id="bg-img" *ngIf="hero">
 <div class="container">
-  <div class="row mt-3">
-    <div class="col-4" *ngIf="hero">
-      <img class="imgCharacter" [src] = "hero.thumbnails" alt="character image">
+  <div class="row m-3">
+    <div class="col-sm-12 col-md-4" *ngIf="hero" id="imgCharacter">
+      <img class="imgCharacter" [src]="hero.thumbnails" alt="character image">
     </div>
-    <div class="col-8">
+    <div class="col-sm-12 col-md-8" *ngIf="hero">
       <ul class="bio">
-        <li><h3>{{ hero.heroName }}</h3></li>
+        <li>
+          <h3>{{ hero.heroName }}</h3>
+        </li>
         <li>Real name : {{ hero.realName }}</li>
         <li>Gender : {{ hero.gender }}</li>
         <li>Place of origin : {{ hero.placeOfOrigin }}</li>
         <li>Powers : {{ hero.powers }}</li>
         <li>affiliation : {{ hero.affiliation }}</li>
       </ul>
-      
-    </div>
-  </div>
-<div class="row">
-  <div class="col-12 border m-0 p-0 text-center"><p>{{ hero.description }}</p></div>
-</div>  
-  <div class="row mt-3">
-    <div class="col-4">
-      <div class="card text-left">
-        <img class="card-img-top" src="holder.js/100px180/" alt="">
-        <div class="card-body">
-          <a class="btn btn-primary" [href]="">Comics</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card text-left">
-        <img class="card-img-top" src="holder.js/100px180/" alt="">
-        <div class="card-body">
-          <a class="btn btn-primary" [href]="">Movies</a>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-4">
-      <div class="card text-left">
-        <img class="card-img-top" src="holder.js/100px180/" alt="">
-        <div class="card-body">
-          <a class="btn btn-primary" [href]="">Series</a>
-        </div>
+      <div class="action">
+        <a class="btn btn-warning m-2" [href]="'hero-modif'">Update</a>
+        <a class="btn btn-danger m-2" [href]="''">Delete</a>
       </div>
     </div>
   </div>
-  
-</div>
+  <div class="row m-3">
+    <div class="col-12 m-0 p-3 text-center description" *ngIf="hero">
+      <p>{{ hero.description }}</p>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-4">
+      <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body d-grid gap-2">
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="'hero-comics-list'">Comics</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body d-grid gap-2">
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="'hero-comics-list'">Movies</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="col-4 text-center">
+      <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body d-grid gap-2">
+          <a class="btn btn-grad btn-lg btn-bloc" [href]="">Series</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

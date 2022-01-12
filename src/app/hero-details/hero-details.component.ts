@@ -14,7 +14,8 @@ import { SeriesService } from '../services/series/series.service';
 export class HeroDetailsComponent implements OnInit {
 
   hero :any = [];
-  
+  @Input() heroBackGround !:string;
+
   constructor(private Hero: HeroService, private Comic: ComicsService, private Movie: FilmService, private Serie: SeriesService, private router : ActivatedRoute) { }
 
   ngOnInit(): void {
