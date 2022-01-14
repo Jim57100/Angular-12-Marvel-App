@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Hero } from '../../../app/models/hero.model';
 import { Observable } from 'rxjs';
@@ -11,15 +10,11 @@ import { map } from 'rxjs/operators';
 })
 export class HeroService 
 {
-
+  
   private dbPath = '/hero';
-  heroesRef: AngularFirestoreCollection<Hero>;
+  heroesRef: AngularFirestoreCollection<Hero>; //A ce cela sert t'il ???
 
-  constructor(private db: AngularFirestore) { 
-    this.heroesRef = db.collection(this.dbPath);
-  }
-
-  heroes = [
+  heroes :any = [
     {
       id: 1,
       heroName: 'Black-Widow',
@@ -39,7 +34,7 @@ export class HeroService
       heroName: 'Thor Odinson',
       realName: 'Thor Odinson',
       gender: 'male',
-      placeOfOrigin: 'A cave in Norwaygard',
+      placeOfOrigin: 'A cave in Norway',
       powers: 'Odinpower"Warrior\'s Madness" (Berserker Rage)Superhuman StrengthSuperhuman DurabilitySuperhuman SpeedSuperhuman ReflexesControl of ElementsHand-to-Hand CombatSword-Fighting',
       affiliation: 'Avengers, Heralds of galactus',
       characterImg: 'https://i.kym-cdn.com/photos/images/original/001/964/578/fe7',
@@ -53,9 +48,9 @@ export class HeroService
       heroName: 'Iron Man',
       realName: 'Tony Stark',
       gender: 'male',
-      placeOfOrigin: '',
-      powers: '',
-      affiliation: '',
+      placeOfOrigin: 'Long Island',
+      powers: 'Heightened Senses, Superhuman Strength, Regeneration, Genius Intelligence',
+      affiliation: 'Avengers, Avengers West Coast, Illuminati, S.H.I.E.L.D.',
       characterImg: '../../../assets/img/characters/Iron_Man.png',
       thumbnails: '../../../assets/img/thumbnails/iron_thumb.png',
       description: 'Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.',
@@ -67,9 +62,9 @@ export class HeroService
       heroName: 'Black Panther',
       realName: 'T’Challa',
       gender: 'male',
-      placeOfOrigin: '',
-      powers: '',
-      affiliation: '',
+      placeOfOrigin: 'Wakanda',
+      powers: 'Heightened Senses, Night Vision, Hand-to-Hand Combat, Superhuman Strength',
+      affiliation: 'Avengers',
       characterImg: '../../../assets/img/characters/black-panther.png',
       thumbnails: '../../../assets/img/thumbnails/panth_thumb.png',
       description: 'As the king of the African nation of Wakanda, T’Challa protects his people as the latest in a legacy line of Black Panther warriors.',
@@ -79,11 +74,11 @@ export class HeroService
     {
       id: 5,
       heroName: 'Hulk',
-      realName: 'BRUCE BANNER',
+      realName: 'Bruce BANNER',
       gender: 'male',
       placeOfOrigin: '',
-      powers: '',
-      affiliation: '',
+      powers: 'Healing Factor, Superhuman Durability, Superhuman Strength, Size and Shape Alteration, Genius Intelligence',
+      affiliation: 'AvengersDefenders',
       characterImg: '../../../assets/img/characters/hulk-marvel.png',
       thumbnails: '../../../assets/img/thumbnails/hulk_thumb.png',
       description: 'Exposed to heavy doses of gamma radiation, scientist Bruce Banner transforms into the mean, green rage machine called the Hulk.',
@@ -96,7 +91,7 @@ export class HeroService
       realName: '',
       gender: 'male',
       placeOfOrigin: '',
-      powers: '',
+      powers: 'Density Shifting, Intangibility, Photokinesis, Remote Interfacing (with other computer systems),Synthezoid, Regeneration, Heightened Senses, Flight, Superhuman Strength, Superhuman Durability, Superhuman Speed, Superhuman Reflexes, Superhuman Agility',
       affiliation: '',
       characterImg: '../../../assets/img/characters/vision.png',
       thumbnails: '../../../assets/img/thumbnails/vision_thumb.png',
@@ -232,20 +227,18 @@ export class HeroService
     },
   ];
 
+  constructor(private db: AngularFirestore) { 
+    this.heroesRef = db.collection(this.dbPath);
+  }
+
   switchFavorite(index :number) 
   {
     this.heroes[index].isFavorite = !this.heroes[index].isFavorite;
   }
 
-  getHeroById(id :number) 
+  getHeroByName(documentName :string) 
   {
-    let tmp;
-    for(const hero of this.heroes) {
-      if(hero.id == id ) {
-        tmp = hero;
-      } 
-    }
-    return tmp;
+    return this.heroesRef.doc(documentName).valueChanges();
   }
 
   getAllHeroes() :any 
@@ -261,11 +254,20 @@ export class HeroService
 
   saveNewHero(hero: Hero) :any 
   {
-    return new Observable(obs => {
-      this.heroesRef.add({...hero}).then(() => {
-        obs.next();
-      })
-    })
+    this.heroesRef.doc(hero.heroName).set({
+      id: hero.id,
+      heroName: hero.heroName,
+      realName: hero.realName,
+      gender: hero.gender,
+      powers: hero.powers,
+      placeOfOrigin: hero.placeOfOrigin,
+      affiliation: hero.affiliation,
+      characterImg: hero.characterImg,
+      thumbnails: hero.thumbnails,
+      description: hero.description,
+      backgroundImg: hero.backgroundImg,
+      isFavorite: hero.isFavorite,
+    });  
   }
 
   get(id: any): any 
@@ -280,12 +282,12 @@ export class HeroService
   update(hero: Hero) :any
   {
     return new Observable(obs => {
-      this.heroesRef.doc(hero.id).update(hero);
+      this.heroesRef.doc(hero.heroName).update(hero);
       obs.next();
     });
   }
 
-  delete(id: any) {
-    this.heroesRef.doc(id).delete();
+  delete(hero: any) {
+    this.heroesRef.doc(hero.heroName).delete();
   }
 }

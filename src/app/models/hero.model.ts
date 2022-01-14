@@ -5,6 +5,7 @@ export class Hero
   realName :string;
   gender :string;
   powers :string;
+  placeOfOrigin :string;
   affiliation :string;
   characterImg :string;
   thumbnails :string;
@@ -24,5 +25,6 @@ export class Hero
     this.description = '';
     this.backgroundImg = '';
     this.isFavorite = false;
+    this.placeOfOrigin = '';
   }
 }

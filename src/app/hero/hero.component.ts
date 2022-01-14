@@ -15,8 +15,8 @@ export class HeroComponent implements OnInit
   @Input() heroName !:string;
   @Input() characterImg !:string;
   @Input() isFavorite !:boolean;
-  @Input() id !:number; //string
-
+  @Input() id !:number;
+  
   constructor(private router: Router, private Hero: HeroService) { }
 
   ngOnInit(): void 

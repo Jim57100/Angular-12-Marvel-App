@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ComicsService } from '../services/comics/comics.service';
 import { HeroService } from '../services/hero/hero.service';
 
@@ -18,7 +19,7 @@ export class HeroComicsListComponent implements OnInit {
   @Input() comicImg !:string;
   @Input() id !:number; //string
 
-  constructor(private Hero: HeroService, private Comic: ComicsService,) { }
+  constructor(private Hero: HeroService, private Comic: ComicsService, private activatedRoutes : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.heroes = this.Hero.heroes;
@@ -26,4 +27,15 @@ export class HeroComicsListComponent implements OnInit {
     this.id = this.heroes.id;
   }
 
+  
+    // getComicsByHeroId(id :number, comics.id) 
+  // {
+  //   let tmp;
+  //   for(const comic of this.comics) {
+  //     if(comic.id == id ) {  //les id des heros sont dans un tableau
+  //       tmp = hero;
+  //     } 
+  //   }
+  //   return tmp;
+  // }
 }

@@ -9,22 +9,23 @@ import { HeroService } from '../services/hero/hero.service';
 })
 export class HeroNewComponent implements OnInit 
 {
+  addAlert:boolean = false;
 
-  hero :any = [];
+  public hero !:Hero; //modele
 
   constructor(private Hero: HeroService) { }
 
   ngOnInit(): void 
   {
-    // this.heroes = this.Hero.heroes;
     this.hero = new Hero();
   }
 
-  add() 
+  addHero() 
   {
-    this.Hero.saveNewHero(this.hero).subscribe(()=>{
+    this.Hero.saveNewHero(this.hero).then(()=>{
+      this.addAlert = true;
       this.hero = new Hero();
-    });
+    }).catch(() => console.log('failed'))
   }
 
 

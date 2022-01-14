@@ -10,22 +10,32 @@ import { HeroService } from '../services/hero/hero.service';
 export class HeroModifComponent implements OnInit 
 {
 
-  hero :any;
+  hero :any =null;
   change:boolean = false;
-  @Input() id !:number;
-  @Input() heroName !:string;
+  // @Input() id !:string;     //Pas sur que cela sert à grand chose...
+  // @Input() heroName !:string;
+  // @Input() realName !:string;
+  // @Input() gender !:string;
+  // @Input() powers !:string;
+  // @Input() affiliation !:string;
+  // @Input() characterImg !:string;
+  // @Input() thumbnails !:string;
+  // @Input() description !:string;
+  // @Input() backgroundImg !:string;
+  // @Input() isFavorite !:boolean;
 
   constructor(private Hero:HeroService, private router : ActivatedRoute) { }
 
   ngOnInit(): void 
   {
-    const id = this.router.snapshot.params['id'];
-    this.hero = this.Hero.getHeroById(id);
-    this.Hero.get(id).subscribe((value: any) => {
-      console.log(value)
-      this.hero = value;
+    const id = this.router.snapshot.params['id'];  //récupère l'id transmis à la page ?
+    this.hero = this.Hero.getHeroByName(id);         //????
+    this.Hero.get(this.hero.heroName).subscribe((value: any) => {  //souscrit à l'action de changement
+      console.log("coucou",value)
+      this.hero = value;                           //attribut la valeur du changement au hero ??
     });
   }
+
 
   modif() 
   {
@@ -37,3 +47,4 @@ export class HeroModifComponent implements OnInit
     })
   }
 }
+

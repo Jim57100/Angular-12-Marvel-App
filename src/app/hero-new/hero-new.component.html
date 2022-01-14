@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row change mb-3" *ngIf="add">
+  <div class="row change mb-3" *ngIf="addAlert">
     <div class="col-12 alert alert-success">
       New hero created !
     </div>
@@ -48,6 +48,31 @@
       </div>
     </div>
 
+
+    <div class="row mb-3">
+      <div class="col-sm-12 col-md-4">
+        <div class="form-group">
+          <label>Character image path</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.characterImg">
+          <div id="imgHelp" class="form-text">../../../assets/img/characters/</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="form-group">
+          <label>Thumbnail path</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.thumbnails">
+          <div id="imgHelp" class="form-text">../../../assets/img/thumbnails/</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="form-group">
+          <label>Background path</label><br>
+          <input type="text" class="form-control" [(ngModel)]="hero.backgroundImg">
+          <div id="imgHelp" class="form-text">../../../assets/img/backgrounds/</div>
+        </div>
+      </div>
+    </div>
+
     <div class="row mb-3 upload">
       <div class="col-sm-12 col-md-4 imgCharac">
         <div class="form-group">
@@ -85,7 +110,7 @@
     <div class="row text-center mb-3">
       <div class="col-12">
         <div class="submit d-grip gap-2">
-          <button type="button" class="btn btn-outline-success btn-lg" (click)="add()">Envoyer</button>
+          <button type="button" class="btn btn-outline-success btn-lg" (click)="addHero()">Envoyer</button>
         </div>
       </div>
     </div>

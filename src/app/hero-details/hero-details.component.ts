@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Hero } from '../models/hero.model';
 import { HeroService } from '../services/hero/hero.service';
-// import { ComicsService } from '../services/comics/comics.service';
-// import { FilmService } from '../services/film/film.service';
-// import { SeriesService } from '../services/series/series.service';
+
 
 @Component({
   selector: 'app-hero-details',
@@ -14,7 +13,7 @@ import { HeroService } from '../services/hero/hero.service';
 export class HeroDetailsComponent implements OnInit 
 {
 
-  hero :any = [];
+  hero :any;
   @Input() heroBackGround !:string;
   @Input() id !:number; 
 
@@ -24,8 +23,12 @@ export class HeroDetailsComponent implements OnInit
   {
     this.hero = this.Hero.heroes;
     const id = this.activatedRoutes.snapshot.params['id'];
-    this.hero = this.Hero.getHeroById(id);
+    this.hero = this.Hero.getHeroByName(id);
   }
 
-
+  //TO DO add alerts with sweetAlerts2 lib.
+  
+  delete(hero :Hero) {
+    this.Hero.delete(hero.heroName);
+  }
 }

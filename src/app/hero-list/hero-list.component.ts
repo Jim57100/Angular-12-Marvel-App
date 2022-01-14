@@ -11,7 +11,7 @@ import { HeroService } from '../services/hero/hero.service';
 export class HeroListComponent implements OnInit 
 {
 
-  heroes :any = [];
+  heroes :any;
 
   constructor(private Hero: HeroService) { }
 
@@ -22,5 +22,8 @@ export class HeroListComponent implements OnInit
       this.heroes = data;
     });
   }
+ 
+  readData() {
 
+  }
 }
